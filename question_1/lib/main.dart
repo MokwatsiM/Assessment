@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           // This works for code too, not just values: Most code changes can be
           // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.indigo,
+            seedColor: Colors.deepPurple,
           ),
           useMaterial3: true,
         ),
@@ -93,43 +93,4 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
-        return Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              state.counter.toString(),
-              style: const TextStyle(fontSize: 30),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: () =>
-                        BlocProvider.of<CounterBloc>(context).add(Increment()),
-                    child: const Icon(Icons.add)),
-                const SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                    onPressed: () =>
-                        BlocProvider.of<CounterBloc>(context).add(Decrement()),
-                    child: const Icon(Icons.remove))
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-          ],
-        );
-      }),
-    );
-  }
-}
