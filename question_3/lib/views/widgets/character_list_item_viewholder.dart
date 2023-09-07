@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:question_3/data/core/models/result.dart';
 import 'package:question_3/utils/status.dart';
 import 'package:question_3/views/style_constants.dart';
+import 'package:question_3/views/widgets/StatusRowListItem.dart';
 import 'package:question_3/views/widgets/status_container_widget.dart';
 
 class CharacterListItemViewHolder extends StatelessWidget {
@@ -31,26 +32,7 @@ class CharacterListItemViewHolder extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8.0),
-          Row(
-            children: <Widget>[
-              if (characterResults.status!.toLowerCase() == Status.alive.name)
-                const StatusContainerWidget(
-                  colors: Colors.green,
-                )
-              else if (characterResults.status!.toLowerCase() ==
-                  Status.dead.name)
-                const StatusContainerWidget(
-                  colors: Colors.red,
-                )
-              else
-                const StatusContainerWidget(
-                  colors: Colors.grey,
-                ),
-              const SizedBox(width: 5),
-              Text("${characterResults.status} - ${characterResults.species}",
-                  style: wp24),
-            ],
-          ),
+          StatusRowListItem(characterResults: characterResults),
           const SizedBox(
             height: 4.0,
           ),
@@ -65,3 +47,5 @@ class CharacterListItemViewHolder extends StatelessWidget {
     );
   }
 }
+
+
