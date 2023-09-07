@@ -8,8 +8,8 @@ class CharactersRemoteDataSourceImpl extends CharactersRemoteDataSource {
   CharactersRemoteDataSourceImpl(this._client);
 
   @override
-  Future<Character> getRickyMortyCharacters() async {
-    final response = await _client.get(pageNo: '1');
+  Future<Character> getRickyMortyCharacters(String pageNo) async {
+    final response = await _client.get(pageNo: pageNo);
     final Character characterResults = Character.fromJson(response);
     return characterResults;
   }
