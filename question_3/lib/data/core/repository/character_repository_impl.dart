@@ -7,10 +7,10 @@ class CharacterReposiroryImpl extends CharactersReposirory {
 
   CharacterReposiroryImpl(this._charactersRemoteDataSource);
   @override
-  Future<Character?> getRickMortyCharacter() async {
+  Future<Character?> getRickMortyCharacter(String pageNo) async {
     try {
       final character =
-          await _charactersRemoteDataSource.getRickyMortyCharacters();
+          await _charactersRemoteDataSource.getRickyMortyCharacters(pageNo);
       return character;
     } catch (e) {
       return null;
