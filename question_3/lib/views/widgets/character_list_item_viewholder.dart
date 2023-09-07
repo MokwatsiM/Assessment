@@ -15,7 +15,7 @@ class CharacterListItemViewHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(105.0, 5.0, 16.0, 16.0),
+      margin: const EdgeInsets.fromLTRB(105.0, 10.0, 16.0, 16.0),
       constraints: const BoxConstraints.expand(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
