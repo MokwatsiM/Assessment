@@ -17,7 +17,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      Provider.of<CharacterViewmodel>(context, listen: false).getCharacters();
+      Provider.of<CharacterViewmodel>(context, listen: false)
+          .getCharacters("1");
     });
     super.initState();
   }
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
 
   _createContent({required CharacterViewmodel viewModel}) {
     return CharacterListView(
-      characterList: viewModel.character!.results!,
+      characterList: viewModel.characterResults!,
       info: viewModel.character!.info!,
     );
   }
