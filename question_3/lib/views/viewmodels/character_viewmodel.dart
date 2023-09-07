@@ -9,12 +9,20 @@ class CharacterViewmodel extends ChangeNotifier {
   LoadingStatus _fetchState = LoadingStatus.fetching;
 
   Character? character;
+  final List<Result> _results = [];
   CharacterViewmodel(this._charactersReposirory);
-  Future<void> getCharacters() async {
-    _fetchState = LoadingStatus.fetching;
+  Future<void> getCharacters(String pageNo) async {
+    if (character != null) {
+      _fetchState = LoadingStatus.done;
+      notifyListeners();
+    } else {
+      _fetchState = LoadingStatus.fetching;
+      notifyListeners();
+    }
     try {
-      character = await _charactersReposirory.getRickMortyCharacter();
+      character = await _charactersReposirory.getRickMortyCharacter(pageNo);
       if (character != null) {
+        _results.addAll(character!.results!);
         _fetchState = LoadingStatus.done;
         notifyListeners();
       } else {
@@ -29,5 +37,5 @@ class CharacterViewmodel extends ChangeNotifier {
   }
 
   LoadingStatus get fetchState => _fetchState;
-  List<Result>? get characterResults => character!.results;
+  List<Result>? get characterResults => _results;
 }
